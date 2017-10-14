@@ -100,7 +100,6 @@ public class VirtualPet {
 	}
 
 	public void tick() {
-		contentment = ((100 - hunger) + health + happiness) / 3;
 		hunger += 7;
 		if (hunger > 100) {
 			hunger = 100;
@@ -119,6 +118,7 @@ public class VirtualPet {
 		} else if (happiness < 0) {
 			happiness = 0;
 		}
+		contentment = ((100 - hunger) + health + happiness) / 3;
 	}
 
 	public void displayAsciiKitten() {

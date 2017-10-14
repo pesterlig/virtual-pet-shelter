@@ -75,6 +75,7 @@ public class VirtualPetShelterTests {
 		assert (frodosOldHealth < testVirtualPetShelter.getPetByName("Frodo").getHealth());
 		assert (bilbosOldHealth < testVirtualPetShelter.getPetByName("Bilbo").getHealth());
 	}
+
 	@Test
 	public void assertTickAllChangesHungerValuesForAll() {
 		int samsOldHunger = testVirtualPetShelter.getPetByName("Sam").getHunger();
@@ -85,18 +86,31 @@ public class VirtualPetShelterTests {
 		assert (frodosOldHunger < testVirtualPetShelter.getPetByName("Frodo").getHunger());
 		assert (bilbosOldHunger < testVirtualPetShelter.getPetByName("Bilbo").getHunger());
 	}
-		
-//	@Test 
-//	public void assertAdoptBilboRemovesBilbosValuesFromMapOfPets() {
-//	
-//	}
 
-//	@Test
-//	public void assertDragRibbonIncreasesHappinessOnOnePet() {
-//		int samsOldHappiness = testVirtualPetShelter.getPetByName("Sam").getHappiness();
-//		testVirtualPetShelter.playWithPetByName("Sam");
-//		assert (samsOldHappiness < testVirtualPetShelter.getPetByName("Sam").getHappiness());
-//	}
+	@Test
+	public void assertTickAllChangesContentmentValuesForAll() {
+		double samsOldContentment = testVirtualPetShelter.getPetByName("Sam").getContentment();
+		double frodosOldContentment = testVirtualPetShelter.getPetByName("Frodo").getContentment();
+		double bilbosOldContentment = testVirtualPetShelter.getPetByName("Bilbo").getContentment();
+		testVirtualPetShelter.tickAllPets();
+		assert (samsOldContentment > testVirtualPetShelter.getPetByName("Sam").getContentment());
+		assert (frodosOldContentment > testVirtualPetShelter.getPetByName("Frodo").getContentment());
+		assert (bilbosOldContentment > testVirtualPetShelter.getPetByName("Bilbo").getContentment());
+	}
+
+	// @Test
+	// public void assertAdoptBilboRemovesBilbosValuesFromMapOfPets() {
+	//
+	// }
+
+	// @Test
+	// public void assertDragRibbonIncreasesHappinessOnOnePet() {
+	// int samsOldHappiness =
+	// testVirtualPetShelter.getPetByName("Sam").getHappiness();
+	// testVirtualPetShelter.playWithPetByName("Sam");
+	// assert (samsOldHappiness <
+	// testVirtualPetShelter.getPetByName("Sam").getHappiness());
+	// }
 
 	// @Test
 	// public void assertThatCollectionPetsValuesReturnsBasicValues() {

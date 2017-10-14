@@ -30,13 +30,14 @@ MAKE AN OVERRIDE FOR TOSTRING -DONE- PERHAPS USE IN TICK METHOD?
  
  include methods that:
  return a Collection of all of the pets in the shelter DONE
- return a specific VirtualPet given its name
+ return a specific VirtualPet given its name - DONE
  allow intake of a homeless pet -DONE
- allow adoption of a homeless pet
- feed all of the pets in the shelter
- water all of the pets in the shelter
+ allow adoption of a homeless pet - DONE
+ feed all of the pets in the shelter -DONE
+ water all of the pets in the shelter - DONE
  plays (or performs some other interaction(s)) with an individual pet in the shelter
- include a tick method that calls the tick method for each of the pets in the shelter, updating their needs
+ include a tick method that calls the tick method for each of the pets in the shelter, 
+ updating their needs -DONE
  
  
  VirtualPetShelterApp: 
@@ -101,5 +102,10 @@ Required Tasks
 Stretch Tasks
 
  Consider any stretch tasks from last week's project that you did not attempt.
- Keep track of the cleanliness of individual pets' cages and offer an option in the user interface to clean pet cages
- DNA! In order to give your pets individual character, include as part of each pet's state one or more multipliers for needs so that one pet may become hungrier/thirstier/more bored slower/faster than another pet. (Tip: you could create a class to encapsulate this.)
+ Keep track of the cleanliness of individual pets' cages and offer an option 
+ in the user interface to clean pet cages
+ DNA! In order to give your pets individual character,
+ include as part of each pet's state one or more multipliers
+ for needs so that one pet may become hungrier/thirstier/more bored slower/faster 
+ than another pet. (Tip: you could create a class to encapsulate this.)
+   
