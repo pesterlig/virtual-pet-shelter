@@ -6,14 +6,14 @@ import org.junit.Test;
 
 public class VirtualPetShelterTests {
 
-	VirtualPetShelter testVirtualPetShelter;
+	ShelterVirtualPet testShelterVirtualPet;
 
 	@Before
 	public void setUpTestContext() {
-		testVirtualPetShelter = new VirtualPetShelter();
-		testVirtualPetShelter.inTake(new VirtualPet("Sam", "ugly", 50, 50, 50, 50.0));
-		testVirtualPetShelter.inTake(new VirtualPet("Frodo", "ugly", 50, 50, 50, 50.0));
-		testVirtualPetShelter.inTake(new VirtualPet("Bilbo", "ugly", 50, 50, 50, 50.0));
+		testShelterVirtualPet = new ShelterVirtualPet();
+		testShelterVirtualPet.inTake(new CatVirtualPet("Sam", "ugly", 50, 50, 50, 50.0));
+		testShelterVirtualPet.inTake(new CatVirtualPet("Frodo", "ugly", 50, 50, 50, 50.0));
+		testShelterVirtualPet.inTake(new CatVirtualPet("Bilbo", "ugly", 50, 50, 50, 50.0));
 
 	}
 
@@ -24,99 +24,126 @@ public class VirtualPetShelterTests {
 
 	@Test
 	public void shouldBeAbleToCreateAPetAssigningAllVariables() {
-		VirtualPet underTest = new VirtualPet("Cat1", "basic", 50, 50, 50, 50.0);
+		CatVirtualPet underTest = new CatVirtualPet("Cat1", "basic", 50, 50, 50, 50.0);
 		assertNotNull(underTest);
 	}
 
 	@Test
 	public void shouldBeAbleToCreatePetWithOverloadedConstructorUsingNameDescription() {
-		VirtualPet underTest = new VirtualPet("Cat2", "basic");
+		CatVirtualPet underTest = new CatVirtualPet("Cat2", "basic");
 		assertNotNull(underTest);
 	}
 
 	@Test
 	public void shouldReturnPetStatsToStringUsingNameDescription() {
-		VirtualPet underTest = new VirtualPet("Cat2", "basic");
+		CatVirtualPet underTest = new CatVirtualPet("Cat2", "basic");
 		assertNotNull(underTest);
 	}
 
 	@Test
 	public void assertThatGetHungerMatchesHungerFullConstructor() {
-		VirtualPet underTest = new VirtualPet("Cat2", "basic", 1, 1, 1, 1.0);
+		CatVirtualPet underTest = new CatVirtualPet("Cat2", "basic", 1, 1, 1, 1.0);
 		int check = underTest.getHunger();
 		assertEquals(1, check);
 	}
 
 	@Test
 	public void assertThatGetHungerMatchesDefaultForOverloadedConstructor() {
-		VirtualPet underTest = new VirtualPet("Cat2", "basic");
+		CatVirtualPet underTest = new CatVirtualPet("Cat2", "basic");
 		int check = underTest.getHunger();
 		assertEquals(75, check);
 	}
 
 	@Test
 	public void assertFeedAllFeedsAll() {
-		int samsOldHunger = testVirtualPetShelter.getPetByName("Sam").getHunger();
-		int frodosOldHunger = testVirtualPetShelter.getPetByName("Frodo").getHunger();
-		int bilbosOldHunger = testVirtualPetShelter.getPetByName("Bilbo").getHunger();
-		testVirtualPetShelter.feedAllPets();
-		assert (samsOldHunger > testVirtualPetShelter.getPetByName("Sam").getHunger());
-		assert (frodosOldHunger > testVirtualPetShelter.getPetByName("Frodo").getHunger());
-		assert (bilbosOldHunger > testVirtualPetShelter.getPetByName("Bilbo").getHunger());
+		int samsOldHunger = testShelterVirtualPet.getPetByName("Sam").getHunger();
+		int frodosOldHunger = testShelterVirtualPet.getPetByName("Frodo").getHunger();
+		int bilbosOldHunger = testShelterVirtualPet.getPetByName("Bilbo").getHunger();
+		testShelterVirtualPet.feedAllPets();
+		assert (samsOldHunger > testShelterVirtualPet.getPetByName("Sam").getHunger());
+		assert (frodosOldHunger > testShelterVirtualPet.getPetByName("Frodo").getHunger());
+		assert (bilbosOldHunger > testShelterVirtualPet.getPetByName("Bilbo").getHunger());
 	}
 
 	@Test
 	public void assertWaterAllWatersAll() {
-		int samsOldHealth = testVirtualPetShelter.getPetByName("Sam").getHealth();
-		int frodosOldHealth = testVirtualPetShelter.getPetByName("Frodo").getHealth();
-		int bilbosOldHealth = testVirtualPetShelter.getPetByName("Bilbo").getHealth();
-		testVirtualPetShelter.waterAllPets();
-		assert (samsOldHealth < testVirtualPetShelter.getPetByName("Sam").getHealth());
-		assert (frodosOldHealth < testVirtualPetShelter.getPetByName("Frodo").getHealth());
-		assert (bilbosOldHealth < testVirtualPetShelter.getPetByName("Bilbo").getHealth());
+		int samsOldHealth = testShelterVirtualPet.getPetByName("Sam").getHealth();
+		int frodosOldHealth = testShelterVirtualPet.getPetByName("Frodo").getHealth();
+		int bilbosOldHealth = testShelterVirtualPet.getPetByName("Bilbo").getHealth();
+		testShelterVirtualPet.waterAllPets();
+		assert (samsOldHealth < testShelterVirtualPet.getPetByName("Sam").getHealth());
+		assert (frodosOldHealth < testShelterVirtualPet.getPetByName("Frodo").getHealth());
+		assert (bilbosOldHealth < testShelterVirtualPet.getPetByName("Bilbo").getHealth());
 	}
 
 	@Test
 	public void assertTickAllChangesHungerValuesForAll() {
-		int samsOldHunger = testVirtualPetShelter.getPetByName("Sam").getHunger();
-		int frodosOldHunger = testVirtualPetShelter.getPetByName("Frodo").getHunger();
-		int bilbosOldHunger = testVirtualPetShelter.getPetByName("Bilbo").getHunger();
-		testVirtualPetShelter.tickAllPets();
-		assert (samsOldHunger < testVirtualPetShelter.getPetByName("Sam").getHunger());
-		assert (frodosOldHunger < testVirtualPetShelter.getPetByName("Frodo").getHunger());
-		assert (bilbosOldHunger < testVirtualPetShelter.getPetByName("Bilbo").getHunger());
+		int samsOldHunger = testShelterVirtualPet.getPetByName("Sam").getHunger();
+		int frodosOldHunger = testShelterVirtualPet.getPetByName("Frodo").getHunger();
+		int bilbosOldHunger = testShelterVirtualPet.getPetByName("Bilbo").getHunger();
+		testShelterVirtualPet.tickAllPets();
+		assert (samsOldHunger < testShelterVirtualPet.getPetByName("Sam").getHunger());
+		assert (frodosOldHunger < testShelterVirtualPet.getPetByName("Frodo").getHunger());
+		assert (bilbosOldHunger < testShelterVirtualPet.getPetByName("Bilbo").getHunger());
 	}
 
 	@Test
 	public void assertTickAllChangesContentmentValuesForAll() {
-		double samsOldContentment = testVirtualPetShelter.getPetByName("Sam").getContentment();
-		double frodosOldContentment = testVirtualPetShelter.getPetByName("Frodo").getContentment();
-		double bilbosOldContentment = testVirtualPetShelter.getPetByName("Bilbo").getContentment();
-		testVirtualPetShelter.tickAllPets();
-		assert (samsOldContentment > testVirtualPetShelter.getPetByName("Sam").getContentment());
-		assert (frodosOldContentment > testVirtualPetShelter.getPetByName("Frodo").getContentment());
-		assert (bilbosOldContentment > testVirtualPetShelter.getPetByName("Bilbo").getContentment());
+		double samsOldContentment = testShelterVirtualPet.getPetByName("Sam").getContentment();
+		double frodosOldContentment = testShelterVirtualPet.getPetByName("Frodo").getContentment();
+		double bilbosOldContentment = testShelterVirtualPet.getPetByName("Bilbo").getContentment();
+		testShelterVirtualPet.tickAllPets();
+		assert (samsOldContentment > testShelterVirtualPet.getPetByName("Sam").getContentment());
+		assert (frodosOldContentment > testShelterVirtualPet.getPetByName("Frodo").getContentment());
+		assert (bilbosOldContentment > testShelterVirtualPet.getPetByName("Bilbo").getContentment());
 	}
-
 	// @Test
-	// public void assertAdoptBilboRemovesBilbosValuesFromMapOfPets() {
+	// public void assertThatGetHungerMatchesHungerFullConstructor() {
+	// CatVirtualPet underTest = new CatVirtualPet("Cat2", "basic", 1, 1, 1, 1.0);
+	// int check = underTest.getHunger();
+	// assertEquals(1, check);
 	//
+	// @Test
+	// public void assertThatGetDesriptionReturnsDescriptionForBilbo() {
+	//
+	// CatVirtualPet underTest = new CatVirtualPet("Bilbo", "Tuxedo cat");
+	// String check =
+	// underTest.ShelterVirtualPet.getPetByName("Bilbo").getDescription();
+	//
+	// assert (bilbosOldHunger >
+	// testShelterVirtualPet.getPetByName("Bilbo").getHunger());
 	// }
+	//
 
 	// @Test
-	// public void assertDragRibbonIncreasesHappinessOnOnePet() {
+	// public void assertForSamPlayWithOnePetByNameIncreasesOnlySamsHappiness() {
 	// int samsOldHappiness =
-	// testVirtualPetShelter.getPetByName("Sam").getHappiness();
-	// testVirtualPetShelter.playWithPetByName("Sam");
+	// testShelterVirtualPet.getPetByName("Frodo").getHappiness();
+	// int frodosOldHappiness =
+	// testShelterVirtualPet.getPetByName("Frodo").getHappiness();
+	// int bilbosOldHappiness =
+	// testShelterVirtualPet.getPetByName("Bilbo").getHappiness();
+	// testShelterVirtualPet.playWithOnePetByName("Sam");
 	// assert (samsOldHappiness <
-	// testVirtualPetShelter.getPetByName("Sam").getHappiness());
+	// testShelterVirtualPet.getPetByName("Sam").getHappiness());
+	// assert (frodosOldHappiness <
+	// testShelterVirtualPet.getPetByName("Frodo").getHappiness());
+	// assert (bilbosOldHappiness <
+	// testShelterVirtualPet.getPetByName("Bilbo").getHappiness());
 	// }
 
-	// @Test
-	// public void assertThatCollectionPetsValuesReturnsBasicValues() {
-	// VirtualPetShelter underTest = new VirtualPetShelter();
-	// Cannot test this - have to do something with values and test that?
+	@Test
+	public void assertForSamPlayWithOnePetByNameIncreasesOnlySamsHappiness() {
+		int samsOldHappiness = testShelterVirtualPet.getPetByName("Sam").getHappiness();
+		int frodosOldHappiness = testShelterVirtualPet.getPetByName("Frodo").getHappiness();
+		int bilbosOldHappiness = testShelterVirtualPet.getPetByName("Bilbo").getHappiness();
+		testShelterVirtualPet.playWithOnePetByName("Sam");
+		assert (samsOldHappiness < testShelterVirtualPet.getPetByName("Sam").getHappiness());
+		assert (frodosOldHappiness == testShelterVirtualPet.getPetByName("Frodo").getHappiness());
+		assert (bilbosOldHappiness == testShelterVirtualPet.getPetByName("Bilbo").getHappiness());
+	}
 }
+
 // @Test
 // public void assertThatMapSizeReturnsOne() {
 // Bank underTest = new Bank();

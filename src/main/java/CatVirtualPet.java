@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class VirtualPet {
+public class CatVirtualPet {
 
 	// In addition to the requirements from last week's project:
 	//
@@ -25,7 +25,7 @@ public class VirtualPet {
 	private double contentment;
 
 	// Constructor
-	public VirtualPet(String name, String description, int hunger, int health, int happiness, double contentment) {
+	public CatVirtualPet(String name, String description, int hunger, int health, int happiness, double contentment) {
 		this.name = name;
 		this.description = description;
 		this.hunger = hunger;
@@ -35,7 +35,7 @@ public class VirtualPet {
 	}
 
 	// Overloaded Constructor
-	public VirtualPet(String name, String description) {
+	public CatVirtualPet(String name, String description) {
 		this.name = name;
 		this.description = description;
 		this.hunger = 75;
@@ -184,4 +184,14 @@ public class VirtualPet {
 		return happiness;
 	}
 
+	public void computeAndDisplayContentment() {
+		if (contentment >= 75) {
+			System.out.println(name + " is mostly content now ");
+		} else if (contentment >= 50 && contentment < 75) {
+			System.out.println(name + " could be happier...");
+		} else if (contentment < 50 && contentment > 0) {
+			System.out.println(name + " is discontent!");
+		}
+
+	}
 }
