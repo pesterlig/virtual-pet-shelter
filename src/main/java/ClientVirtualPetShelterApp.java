@@ -8,59 +8,83 @@ public class ClientVirtualPetShelterApp {
 
 		CatVirtualPet cat1 = new CatVirtualPet("Finnie", "ginger-striped American shorthair", 0, 100, 100, 100.0);
 		lesliesCathouse.inTake(cat1);
-		CatVirtualPet cat2 = new CatVirtualPet("Foggy", "kick-ass", 50, 50, 50, 50.0);
+		CatVirtualPet cat2 = new CatVirtualPet("Foggy", "kick-ass cat", 50, 50, 50, 50.0);
 		lesliesCathouse.inTake(cat2);
 		System.out.println("Welcome to Leslie's Cat House!");
+		System.out.println("There are " + lesliesCathouse.getNumberOfPetsInShelter() + " cats in the shelter today.");
 
-		displayShelterMenu();
+		// displayShelterMenu();
 
 		// System.out.println("The pets in the shelter are :" +
 		// lesliesCathouse.petsValues());
 
-		String choice = input.nextLine();
-
+		// String choice = input.nextLine();
+		String choice = "0";
 		// Game Loop:
-		while (choice != "q") {
+		while (choice != "q" || choice == "0") {
+			// lesliesCathouse.showAllPetsValuesTable();
+			displayShelterMenu();
+			choice = input.nextLine();
 
 			if (choice.contains("1")) {
-				lesliesCathouse.getNumberOfPetsInShelter();
+				System.out.println("\nHey! Ho!  Let's Go!  \nCheck out all our awesome cats below:\n");
+				displayAsciiKitten();
+				lesliesCathouse.showAllPetsValuesInSentences();
+				System.out.println("Please choose the kitty you would like to play with!\n");
+				String catPlayChoice = input.nextLine();
+				lesliesCathouse.playWithOnePetByName(catPlayChoice);
+				System.out.println(catPlayChoice + " is much happier now!\n");
+				lesliesCathouse.showAllPetsValuesTable();
 				// Show names and descriptions, play with cat, show specific cat's values, print
 				// a line about playing with the cat
-				System.out.println(
-						"There are " + lesliesCathouse.getNumberOfPetsInShelter() + " cats in the shelter today.");
 			} else if (choice.contains("2")) {
 				// Show list of cats, get cat by name, remove cat
-				lesliesCathouse.showAllPetsValuesInATable();
+				lesliesCathouse.showAllPetsValuesInSentences();
 				System.out.println("Please enter the name of the cat you would like to adopt!\n");
 				String adoptionChoice = input.nextLine();
 				lesliesCathouse.adopt(adoptionChoice);// take care of different case match-up
-				System.out.println("Thank you for adopting " + adoptionChoice + "!");
+				System.out.println("Thank you for adopting " + adoptionChoice + "!\n");
 				// once you adopt a cat, are you back in virtual pet mode???? Good idea, but
 				// seems beyond the scope now
 			} else if (choice.contains("3")) {
 				lesliesCathouse.feedAllPets();
-				System.out.println("Thank you for feeding all the kitties!!! \n");
+				System.out.println("Thank you for feeding all the kitties!!!  Their hunger has decreased! \n");
+				lesliesCathouse.showAllPetsValuesTable();
 			} else if (choice.contains("4")) {
 				lesliesCathouse.waterAllPets();
 				System.out.println("Thank you for giving all the cats fresh water!  They are healthier now!\n");
+				lesliesCathouse.showAllPetsValuesTable();
 			} else if (choice.contains("5")) {
-				System.out.println("So, you want to drop off a kitten.  What kind of kitten is he?");
+				System.out.println("So, you want to drop off a kitten.  What is the kitten's name?");
+				String nameAtIntake = input.nextLine();
+				// IDEA - take in all these kittens as array list, get index numbers on them as
+				// they appear,
+				// create the map using the indexes as keys & eliminate the case problem? Or
+				// create more problems?
+				System.out.println("Please describe your cat for the record:");
+
+				String descriptionAtIntake = input.nextLine();
+				CatVirtualPet cat3 = new CatVirtualPet(nameAtIntake, descriptionAtIntake);
+				lesliesCathouse.inTake(cat3);
+				System.out.println("Thank you for bringing in " + nameAtIntake + "!");
+				System.out.println(
+						"There are " + lesliesCathouse.getNumberOfPetsInShelter() + " cats in the shelter now.");
+				lesliesCathouse.showAllPetsValuesInSentences();
+
 				// set description, set name? Or call new constructor on this kitten?
 			} else if (choice.contains("q")) {
 				System.out.println("Thank you for visiting!");
 				System.out.println("Game Over");
 				System.exit(0);
 
-			} else {
+			} else
 				System.out.println("That was not a valid choice");
-			}
-			lesliesCathouse.tickAllPets();
-			displayShelterMenu();
-			choice = input.nextLine();
-
 		}
+		lesliesCathouse.tickAllPets();
 
 	}
+
+	
 
 	public static void displayShelterMenu() {
 		System.out.println("What would you like to do? (Input number of choice)");
@@ -70,6 +94,16 @@ public class ClientVirtualPetShelterApp {
 		System.out.println(" 4 = Volunteer to give all the cats fresh water");
 		System.out.println(" 5 = Admit a cat to the shelter");
 		System.out.println(" Leave the Leslie's Cat House (Type q to quit)");
+	}
+
+	public static void displayAsciiKitten() {
+		char backSlash = '\\';
+		System.out.println("	    /|");
+		System.out.println("	  =(o  ` 7");
+		System.out.println("	     ` o =");
+		System.out.println("	   /   `" + backSlash);
+		System.out.println("	   U U\n");
+
 	}
 
 }

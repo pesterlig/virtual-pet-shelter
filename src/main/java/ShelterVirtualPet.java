@@ -63,15 +63,27 @@ public class ShelterVirtualPet {
 		}
 	}
 
-	public void showAllPetsValuesInATable() {
+	public void showAllPetsValuesInSentences() {
 		for (CatVirtualPet pet : pets.values()) {
 			System.out.println("Cat name: " + pet.getName() + " Description : " + pet.getDescription());
 			System.out.println("Hunger = " + pet.getHunger() + "%\tHealth = " + pet.getHealth() + "%\tHappiness = "
 					+ pet.getHappiness() + "%");
 			pet.computeAndDisplayContentment();
 			System.out.println(" ");
+		}
+
+	}
+
+	public void showAllPetsValuesTable() {
+		System.out.println("Name\t\t|Hunger\t\t|Health\t\t|Happiness\t|Contentment");
+		System.out.println("--------------------------------------------------------------------------");
+		for (CatVirtualPet pet : pets.values()) {
+			System.out.println(pet.getName() + "\t\t|" + pet.getHunger() + "%\t\t|" + pet.getHealth() + "%\t\t|"
+					+ pet.getHappiness() + "%\t\t|" + pet.getContentment() + "%");
+			System.out.println(" ");
 
 		}
+
 	}
 
 }

@@ -78,6 +78,8 @@ Available user interface actions should include (at minimum)…
  allow adoption of a pet, DONE
  which should display a list of pet names and descriptions, DONE
  allowing a user to select one DONE - NEEDS WORK ON NAME CASE
+ Notes 6:30 am Monday - Having trouble with constructing multiple pets for the intake.  I can intake one, but how do 
+ I get the user to create the name of the new instantiation? Seems like I am not allowed to use a variable there?  Can I set name and use the name?
  allow intake of a pet, prompting the user for the pet's information, requiring the user to (at minimum) specify name and description
 (Hint: you can use tab characters ("\t") to align console output in columns.)
 

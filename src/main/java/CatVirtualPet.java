@@ -180,7 +180,7 @@ public class CatVirtualPet {
 	}
 
 	public int dragRibbon() {
-		happiness += (10 * (randNum));
+		happiness += (20 * (randNum));
 		return happiness;
 	}
 
