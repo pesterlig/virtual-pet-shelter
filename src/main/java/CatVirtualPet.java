@@ -166,6 +166,11 @@ public class CatVirtualPet {
 
 	public int feedDryFood() {
 		hunger -= (10 * (randNum));
+		if (hunger > 100) {
+			hunger = 100;
+		} else if (hunger < 0) {
+			hunger = 0;
+		}
 		return hunger;
 	}
 
@@ -176,11 +181,21 @@ public class CatVirtualPet {
 
 	public int waterCat() {
 		health += (20 * (randNum));
+		if (health > 100) {
+			health = 100;
+		} else if (health < 0) {
+			health = 0;
+		}
 		return health;
 	}
 
 	public int dragRibbon() {
 		happiness += (20 * (randNum));
+		if (happiness > 100) {
+			happiness = 100;
+		} else if (happiness < 0) {
+			happiness = 0;
+		}
 		return happiness;
 	}
 
