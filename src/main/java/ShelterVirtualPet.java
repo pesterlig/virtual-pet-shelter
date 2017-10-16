@@ -65,7 +65,7 @@ public class ShelterVirtualPet {
 
 	public void showAllPetsValuesInSentences() {
 		for (CatVirtualPet pet : pets.values()) {
-			System.out.println("Cat name: " + pet.getName() + " Description : " + pet.getDescription());
+			System.out.println("Cat name: " + pet.getName() + "\t Description : " + pet.getDescription());
 			System.out.println("Hunger = " + pet.getHunger() + "%\tHealth = " + pet.getHealth() + "%\tHappiness = "
 					+ pet.getHappiness() + "%");
 			pet.computeAndDisplayContentment();
